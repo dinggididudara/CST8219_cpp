@@ -3,7 +3,7 @@
 
 #include "Week1.h"
 
-#define usingNamespaces 0
+#define usingNamespaces 1
 
 #if usingNamespaces == 0
 using namespace std;
@@ -18,7 +18,7 @@ int main()
 int main()
 {
 	#pragma message("Not using namespaces")
-	std::count << "Hellow world!" << std::endl;
+	std::cout << "Hello world!" << std::endl;
 	return 0;
 }
 #endif
