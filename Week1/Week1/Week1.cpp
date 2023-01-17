@@ -1,5 +1,5 @@
-﻿// Week1.cpp : Defines the entry point for the application.
-//
+﻿// Soomin Lee 040899389 CST8219 303
+// Week1.cpp : Defines the entry point for the application.
 
 #include "Week1.h"
 
