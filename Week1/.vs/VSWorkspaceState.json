@@ -13,8 +13,9 @@
   },
   "ExpandedNodes": [
     "",
+    "\\out",
     "\\Week1"
   ],
-  "SelectedNode": "\\Week1\\Week1.cpp",
+  "SelectedNode": "\\out\\build",
   "PreviewInSolutionExplorer": false
 }

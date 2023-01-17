@@ -5,20 +5,20 @@
 
 #define usingNamespaces 0
 
-#if using namespace std
-#pragma message("Using namespaces")
+#if usingNamespaces == 0
+using namespace std;
 int main()
 {
+	#pragma message("Using namespaces")
 	cout << "Hello world!" << endl;
 	return 0;
 }
 
-#elif ??
-#pragma message("Not using namespaces")
+#elif usingNamespaces != 0
 int main()
 {
+	#pragma message("Not using namespaces")
 	std::count << "Hellow world!" << std::endl;
 	return 0;
 }
 #endif
-

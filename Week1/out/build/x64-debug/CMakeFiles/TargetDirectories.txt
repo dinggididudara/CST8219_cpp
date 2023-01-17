@@ -1,3 +1,4 @@
+C:/Users/dinggididudara/source/repos/Week1/out/build/x64-debug/CMakeFiles/Soomin_Lab1.dir
 C:/Users/dinggididudara/source/repos/Week1/out/build/x64-debug/CMakeFiles/edit_cache.dir
 C:/Users/dinggididudara/source/repos/Week1/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
 C:/Users/dinggididudara/source/repos/Week1/out/build/x64-debug/Week1/CMakeFiles/Week1.dir

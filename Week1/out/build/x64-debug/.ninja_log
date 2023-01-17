@@ -1,0 +1,12 @@
+# ninja log v5
+11	1329	6953338034319903	CMakeFiles/Soomin_Lab1.dir/Week1/Week1.cpp.obj	2301e3b1fb782d59
+20	1673	6953338037725381	Week1/CMakeFiles/Week1.dir/Week1.cpp.obj	7eaccb8a183900e7
+1330	1727	6953338037425353	Soomin_Lab1.exe	8d0b0ce8ee67df82
+1674	1867	6953338039320587	Week1/Week1.exe	92ba90e0fa608a16
+30	44	0	clean	8c45b54705a541e8
+3	672	6956658367460867	CMakeFiles/Soomin_Lab1.dir/Week1/Week1.cpp.obj	2301e3b1fb782d59
+8	1116	6956658371963500	Week1/CMakeFiles/Week1.dir/Week1.cpp.obj	7eaccb8a183900e7
+19	705	6956658807423188	CMakeFiles/Soomin_Lab1.dir/Week1/Week1.cpp.obj	2301e3b1fb782d59
+706	942	6956658809123318	Soomin_Lab1.exe	8d0b0ce8ee67df82
+31	1169	6956658812111282	Week1/CMakeFiles/Week1.dir/Week1.cpp.obj	7eaccb8a183900e7
+1169	1355	6956658813611690	Week1/Week1.exe	92ba90e0fa608a16
