@@ -9,15 +9,21 @@ namespace CST8219{
 		int numWheels, numDoors;
 
 	public:
-		Car() { numWheels = numDoors = 0; } //constructor initialize
 		Car(int w, int d){			//constrcutor for the number of wheels and doors
 			numWheels = w;
 			numDoors = d;
+
+			cout << "In constructor with 2 parameters" << endl;
 		}
-		Car(int w) : Car(w,4) { }	//constructor with parameter doors = 4
-		Car() : Car(4) {} //empty constructor, calling another constructor
-	};
-}
+		Car(int w) : Car(w, 4) { 	//constructor with parameter doors = 4
+			cout << "In constructor with 1 parameters, wheels= " << w << endl;
+		}
+		Car() : Car(4) {	//empty constructor, calling another constructor
+			cout << "In constructor with 0 parameters" << endl;
+		} 
+		~Car(){} //destructor
+	}; //class end
+} //CST8219 end
 
 
 int main(int argc, char **argv)
