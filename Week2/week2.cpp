@@ -28,7 +28,7 @@ namespace CST8219{
 
 int main(int argc, char **argv)
 {
-	CST8219::Car myCar;
+	CST8219::Car myVehicle(4);
    cout << "I made a Car!" << endl;
    return 0;
 }
