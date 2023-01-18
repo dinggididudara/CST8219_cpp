@@ -28,6 +28,7 @@ namespace CST8219{
 
 int main(int argc, char **argv)
 {
-   cout << "Hello World!" << endl;
+	CST8219::Car myCar;
+   cout << "I made a Car!" << endl;
    return 0;
 }
