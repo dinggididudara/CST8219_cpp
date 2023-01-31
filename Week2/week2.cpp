@@ -28,6 +28,33 @@ namespace CST8219{
 } //CST8219 end
 
 
+
+int userInput(char* what) {
+	char in = 0;
+	while (1) {
+		
+		cout << what << endl;
+		cin >> in; 
+		
+		cin.clear();
+		if (isdigit(in)) {
+			return (int) in;
+		}
+		else if (in == 'q' || in == 'Q') {  //if q or Q
+			return -1;
+		}
+		else if (in == 'y' || in == 'Y') {
+			return 1;
+		}
+		else {
+			cout << "Wrong input. Try again." << endl;
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
+	}
+	return -1;
+}
+
 int main(int argc, char **argv)
 {
    CST8219::Car veh1;
@@ -39,29 +66,23 @@ int main(int argc, char **argv)
    cout << "Vehicle takes " << sizeof(veh3) << endl;
 
    CST8219::Car* pVehicle;
-   int d, w = 0;
-   char c;
+   int d, w;
+   int c=0;
    do {
-	   cout << "do you want to continue? (q/Q for quit)" << endl;
-	   cin >> c;
-	   pVehicle = 0;
-		if (c == 'q' || c == 'Q') {
-			delete pVehicle;
-		   return 0;
+	    pVehicle = 0;
+	    	  
+		if (c == -1) {  //if quit
+		   cout << "Bye" << endl;
+		   break;
 		}
 		else {
-			do {
-				
-				cin.clear();
-				cin.ignore(256, '\n');
-				cout << "enter number of doors" << endl;
-				cin >> d;
-				cout << "enter number of wheels" << endl;
-				cin >> w;
-			} while (d < 0 || w < 0);
+			d = userInput("enter number of doors");
+			w = userInput("enter number of wheels");
+			
 			pVehicle = new CST8219::Car(w, d);
+			c = userInput("do you want to continue? (q/Q for quit, y/Y for continue)");
 		}
-   } while (c != 'q' || c != 'Q');
-   
+   } while (c > 0);
+   delete pVehicle;
    return 0;
 }
