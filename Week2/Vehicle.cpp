@@ -16,8 +16,8 @@ CST8219::Car::Car() : Car(4) {	//empty constructor, calling another constructor
 
 // --------------------week4------------------------
 void CST8219::Car::printVehicle(void) {
-	cout << "number of wheels:" << getWheels() << endl;
-	cout << "number of doors:" << getDoors() << endl;
+	cout << "week4 : number of wheels:" << getWheels() << endl;
+	cout << "week4 : number of doors:" << getDoors() << endl;
 	cout << "------------" << endl;
 }
 
