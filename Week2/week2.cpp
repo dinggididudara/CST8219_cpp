@@ -34,52 +34,29 @@ void CreateCar(CST8219::Car &v, int w=4, int d=2) {
 
 int main(int argc, char **argv)
 {
-   CST8219::Car veh1;
-   CST8219::Car veh2(4);
-   CST8219::Car veh3(4, 2);
-   
-   cout << "Vehicle takes " << sizeof(veh1) << endl;
-   cout << "Vehicle takes " << sizeof(veh2) << endl;
-   cout << "Vehicle takes " << sizeof(veh3) << endl;
-
-   CST8219::Car* pVehicle;
-   int d, w;
-   int c=0;
-   do {
-	    pVehicle = 0;
-	    	  
-		if (c == -1) {  //if quit
-		   cout << "Bye" << endl;
-		   break;
-		}
-		else {
-			d = userInput("enter number of doors");
-			w = userInput("enter number of wheels");
+   CST8219::Car original;
+   CST8219::Car copy(original);		//pass by reference
 			
-			pVehicle = new CST8219::Car(w, d);
+   cout << "Original is: " << original << ". copy is: " << copy << endl;
 
-			//week4--------------------------------------------------
-			CST8219::Car original;
+   cout << "Increment original: " << original++ << endl;
+   cout << "Increment copy:" << ++copy << endl;
 
-			CST8219::Car copy(original);		//pass by reference
-			CST8219::Car secondCopy(&original);  //pass by pointer
+   cout << "Decrement original:" << --original << endl;
+   cout << "Decrement copy:" << copy-- << endl;
 
-			copy.printVehicle();
+   // should be true :
+   cout << "Compare equality 1: " << (original == copy) << endl;
 
-			CreateCar(copy, 2);
-			copy.printVehicle();
+   //should be false:
+   cout << "Compare equality 2: " << (--original == ++copy) << endl;
 
-			CreateCar(copy, 2, 3);
-			copy.printVehicle();
+   //should be true:
+   cout << "Compare inequality: " << (original != copy) << endl;
 
-			copy = secondCopy;
-			copy.printVehicle();
-			//week4--------------------------------------------------
+   //This should make original = copy, and then return a Car for output:
+   cout << "Assignment operator: " << (original = copy) << endl;
 
-			c = userInput("do you want to continue? (q/Q for quit, y/Y for continue)");
-		}
-   } while (c > 0);
-   delete pVehicle;
-     
+
    return 0;
 }
