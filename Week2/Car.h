@@ -41,12 +41,12 @@ namespace CST8219 {
 			}
 			return false;
 		}
-		Car operator!=(const Car& a) const {
+		Car operator!=(const Car& a) {
 		
-			if ((getWheels() != a.numWheels) && (getDoors() != a.numDoors)) {
-				return false;
+			if (getWheels() == a.numWheels || getDoors() != a.numDoors) {
+				return true;
 			}
-			return true;
+			return false;
 		}
 		Car operator++(int) {
 
