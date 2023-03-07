@@ -5,69 +5,79 @@
 
 using namespace std;
 
-namespace CST8219 {
 	class Car {
 	private:
-		int numWheels, numDoors;
+		//int numWheels, numDoors;
 		
-
 	public:
-		friend ostream& operator<<(ostream &out, const Car &c);
-		
-		Car(int w, int d);
-		Car(int w);
-		Car();
+		float engineEfficiency=0;
 
-		void printVehicle(void);
+		virtual float calculateRange()=0;
+		virtual float percentageEnergyRemaining()=0;
+		virtual void drive(float km)=0;
 
-		Car(Car&);		// copy by reference	
-		Car(Car*);		// copy by pointer
+		//friend ostream& operator<<(ostream &out, const Car &c);
+		//
+		//Car(int w, int d);
+		//Car(int w);
+		//Car();
 
-		void setWheels(int w) { numWheels = w; }
-		int getWheels(void) const { return numWheels; }
+		//void printVehicle(void);
 
-		void setDoors(int d) { numDoors = d; }
-		int getDoors() const { return numDoors; }
-			
-		Car operator=(const Car& a) {
-			setWheels(a.numWheels);
-			setDoors(a.numDoors);
-			return Car(getWheels(),getDoors());
-		}
-		Car operator==(const Car& a) {
+		//Car(Car&);		// copy by reference	
+		//Car(Car*);		// copy by pointer
 
-			if ((getWheels() == a.numWheels) && (getDoors() == a.numDoors)) {			
-				return true;
-			}
-			return false;
-		}
-		Car operator!=(const Car& a) {
-		
-			if (getWheels() == a.numWheels || getDoors() != a.numDoors) {
-				return true;
-			}
-			return false;
-		}
-		Car operator++(int) {
+		//void setWheels(int w) { numWheels = w; }
+		//int getWheels(void) const { return numWheels; }
 
-			return Car(numWheels++, numDoors++);
-		}
-		Car operator++() {
+		//void setDoors(int d) { numDoors = d; }
+		//int getDoors() const { return numDoors; }
+		//	
+		//Car operator=(const Car& a) {
+		//	setWheels(a.numWheels);
+		//	setDoors(a.numDoors);
+		//	return Car(getWheels(),getDoors());
+		//}
+		//Car operator==(const Car& a) {
 
-			return Car(++numWheels, ++numDoors);
-		}
-		Car operator--(int) {
+		//	if ((getWheels() == a.numWheels) && (getDoors() == a.numDoors)) {			
+		//		return true;
+		//	}
+		//	return false;
+		//}
+		//Car operator!=(const Car& a) {
+		//
+		//	if (getWheels() == a.numWheels || getDoors() != a.numDoors) {
+		//		return true;
+		//	}
+		//	return false;
+		//}
+		//Car operator++(int) {
 
-			return Car(numWheels--, numDoors--);
-		}
-		Car operator--() {
+		//	return Car(numWheels++, numDoors++);
+		//}
+		//Car operator++() {
+
+		//	return Car(++numWheels, ++numDoors);
+		//}
+		//Car operator--(int) {
+
+		//	return Car(numWheels--, numDoors--);
+		//}
+		//Car operator--() {
 	
-			return Car(--numWheels, --numDoors);
-		}
+		//	return Car(--numWheels, --numDoors);
+		//}
 
-		~Car();
+		virtual ~Car();
 	}; //class end
-} //CST8219 end
+
+	
+
+	
+
+	
+
 
 
 
