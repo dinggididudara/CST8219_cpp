@@ -10,7 +10,7 @@ namespace Helper {
 		if (a < b) {
 			return a;
 		}
-		eles if (a > b) {
+		else if (a > b) {
 			return b;
 		}
 		else {
@@ -22,7 +22,7 @@ namespace Helper {
 		if (a < b) {
 			return b;
 		}
-		eles if (a > b) {
+		else if (a > b) {
 			return a;
 		}
 		else {
@@ -30,14 +30,16 @@ namespace Helper {
 		}
 	}
 }
-
-	class Car {
+template <class T>
+class Car {
 	
-	public:
-		float engineEfficiency=0;
-		void testTemplateLibrary();
-		~Car();
-	}; //class end
+public:
+	T engineEfficiency=0;
+	
+	~Car() {
+		//cout << "In destructor" << endl;
+	} //destructor
+}; //class end
 
 	
 

@@ -1,9 +1,17 @@
 // Soomin Lee 040899389 CST8219 303
 
 # include "HybridCar.h"
+# include <vector>
 
 void testTemplateLibrary() {
-	
+	vector<int> randomNumber;
+	for (int i = 0; i < 10; i++) {
+		randomNumber.push_back(rand());
+	}
+
+	for (vector<int>::iterator it = randomNumber.begin(); it != randomNumber.end(); it++) {
+		cout << *it << endl;
+	}
 }
 
 template<class T>
@@ -17,12 +25,12 @@ T testCar(T pCar, const char* CarName) {
 }
 int main(int argc, char **argv)
 {   
-	delete testCar(new GasolineCar(50, 6.3), "Corolla"); 
-	// 50L of gas, 6.3L/100km
-	delete testCar(dynamic_cast<ElectricCar*>(new HybridCar(42, 4.1, 9.8, 22.0)), "Prius"); 
-	// 42L of gas, 4.1L/100km, 9.8kWh, 22kWh/100km
-	delete testCar(new ElectricCar(78, 16), "Tesla 3");
-	// 78kWh, 16kWh/100km
+	delete testCar(new GasolineCar<float>(50, 7.1), "Corolla"); 
+	// 50L of gas, 7.1L/100km
+	delete testCar(new HybridCar<double>(42, 4.3, 8.8, 22.0), "Prius"); 
+	// 42L of gas, 4.3L/100km, 8.8kWh, 22kWh/100km
+	delete testCar(new ElectricCar<int>(75, 16), "Tesla 3");
+	// 75kWh, 16kWh/100km
 
 	cout << "min of 5 and 7 is:" << Helper::min(5, 7) << endl;
 	cout << "min of 5 and 7 is:" << Helper::max(5, 7) << endl;

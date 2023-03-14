@@ -1,18 +1,31 @@
 # include "Car.h"
 
-class ElectricCar : public Car {
-protected:
-	ElectricCar() {}
+template <class T>
+class ElectricCar : Car<T>{
 public:
-	float currentCharge = 0, maximumCharge=0;
-	
-	ElectricCar(float currentCharge, float engineEfficiency);
 
-	float calculateRange();
+	T currentCharge = 0, maximumCharge=0;
+	inline ElectricCar() {}
+	inline ElectricCar(T currentCharge, T engineEfficiency) {
+		this->currentCharge = currentCharge;
+		this->maximumCharge = currentCharge;
+		this->engineEfficiency = engineEfficiency;
+	}
 
-	float percentageEnergyRemaining();
+	inline T calculateRange() {
+		return (currentCharge * 100 / engineEfficiency);
+	}
 
-	void drive(float km);	
+	inline T percentageEnergyRemaining() {
+		return (currentCharge * 1.0 / maximumCharge * 1.0 * 100.0f);
+	}
+
+	inline void drive(float km) {
+		currentCharge -= (km / 100) * engineEfficiency;
+		if (currentCharge <= 0) {
+			cout << "Your car is out of energy" << endl;
+		}
+	}
 
 	~ElectricCar() {
 		cout << "In the destructor for ElectricCar" << endl;
