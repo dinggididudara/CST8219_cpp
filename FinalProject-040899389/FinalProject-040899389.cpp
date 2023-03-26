@@ -4,33 +4,58 @@
 
 int main()
 {
-	sf::RenderWindow window({ 800,600 }, "TGUI window with sfml");
+	cout << "Opening the window.." << endl;
+	sf::RenderWindow window({ 800,600 }, "Simon Game");
 	tgui::Gui gui{ window };
 	gui.loadWidgetsFromFile("form.txt");
-	gui.mainLoop();
+	cout << "Loading the file.." << endl;
+	
+	while (window.isOpen()) { 
+		gui.mainLoop();//////error from here
+		cout << "Configuration.." << endl;
 
-	auto startButton = gui.get<tgui::Button>("StartGameButton");
-	auto greenButton = gui.get<tgui::Button>("GreenButton");
-	auto blueButton = gui.get<tgui::Button>("BlueButton");
-	auto redButton = gui.get<tgui::Button>("RedButton");
-	auto yellowButton = gui.get<tgui::Button>("YellowButton");
+		static auto startButton = gui.get<tgui::Button>("StartGameButton");
+		static auto greenButton = gui.get<tgui::Button>("GreenButton");
+		static auto blueButton = gui.get<tgui::Button>("BlueButton");
+		static auto redButton = gui.get<tgui::Button>("RedButton");
+		static auto yellowButton = gui.get<tgui::Button>("YellowButton");
 
-	auto msgTextArea = gui.get<tgui::TextArea>("MessageTextArea");
-
-	startButton->onClick([]() {
-		startGame(); //if click the new game start button, then start new game
-		
-		});
-	greenButton->onClick([]() {cout << "You Clicked start button"; });
-	blueButton->onClick([]() {cout << "You Clicked start button"; });
-	redButton->onClick([]() {cout << "You Clicked start button"; });
-	yellowButton->onClick([]() {cout << "You Clicked Yellow button"; });
-
+		static auto msgTextArea = gui.get<tgui::TextArea>("MessageTextArea");
+	
+		int click[4] = { GREEN, RED, YELLOW, BLUE }; //array for click by user
+	
+		cout << msgTextArea << endl;
+		startButton->onClick([]() {
+			cout << "Starting the new game now" << endl;
+			msgTextArea->setText("Starting the new game now\n");
+			startGame(); //if click the new game start button, then start new game
+			});
+		greenButton->onClick([]() {
+			msgTextArea->addText("You Clicked Green Button\n");
+			});
+		blueButton->onClick([]() {
+			msgTextArea->addText("You Clicked Blue Button\n");
+			});
+		redButton->onClick([]() {
+			msgTextArea->addText("You Clicked Red Button\n");
+			});
+		yellowButton->onClick([]() {
+			msgTextArea->addText("You Clicked Yellow Button");		
+			});
+	}
+	
 
 	return 0;
 }
 
 void startGame() {
+	int ran = rand() % 4;
+	double seconds = 0.5; //0.5 seconds
+	cout << "Random Number Generated. Please Click any buttons" << endl;
+	//msgTextArea->addText("Random Number Generated. Please Click any button\n");
+}
 
-
+void endGame() {
+	cout << "Game End" << endl;
+//	msgTextArea->addText("Game End\n");
 }
