@@ -22,8 +22,11 @@ public class Lab8java
 			numbers[i] = ran.nextInt(100); 
 			System.out.println("Array: " + numbers[i]);	
 		}
+		long timeBefore = System.currentTimeMillis();
 		double mean = cpp.calculateMean(numbers); 
 		double sd = cpp.calculateSTDDev(numbers);
+		long timeAfter = System.currentTimeMillis();
+		System.out.println("Time: " + (timeAfter-timeBefore));
 		System.out.println("Mean: " + mean + ", Standard Deviation: " + sd);
 	}
 	public native double calculateMean(int [] numbers);
