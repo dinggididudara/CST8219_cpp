@@ -6,14 +6,15 @@
 #include <TGUI/Backend/SFML-Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <TGUI/Components.hpp>
-#include "SFML/include/SFML/Graphics/Color.hpp"
+//#include "include/Graphics/Color.hpp"
 
+#include <stdlib.h>
 #include <iostream>
 
-#define GREEN 1
-#define RED 2
-#define YELLOW 3
-#define BLUE 4
+//#define GREEN sf::Color(191,255,126)
+//#define RED sf::Color(255,166,153)
+//#define sf::Color(255,246,174)
+//#define BLUE sf::Color(176,180,255)
 
 using namespace std;
 
@@ -23,9 +24,11 @@ sf::Color col[]{ sf::Color(191,255,126), //green
 				 sf::Color(176,180,255) //blue
 };
 
+
 string music[]{"canary.wav", "ball.wav", "orchestral.ogg", "doodle_pop.ogg"};
 
 void startGame();
 void endGame();
+//void setText(string a);
 
 
