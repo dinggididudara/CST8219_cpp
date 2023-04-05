@@ -1,7 +1,7 @@
 ﻿// Soomin Lee 040899389 CST8219 303 Final Project
 
 #include "FinalProject-040899389.h"
-
+#include <vector>
 
 int main()
 {
@@ -41,17 +41,35 @@ int main()
 	static bool gameOver = false;
 
 
+	static vector<int> ran_vec = { 0 };
+	static vector<int> clicked_vec = { 0 };
+	clicked_vec.clear();
 
 	// main loop
-	//while (window.isOpen()) {
-	sf::Clock clock;
-	sf::Event event;
+	
+	
 
-	// //handle window close event
-	//while (window.pollEvent(event)) {
-	//	if (event.type == sf::Event::Closed)
-	//		window.close();				
-	//}
+
+	greenButton->onClick([&]() {
+		msgTextArea->setText("You Clicked Green Button\n");
+	clicked_vec.push_back(1);
+
+		});
+	redButton->onClick([&]() {
+		msgTextArea->setText("You Clicked Blue Button\n");
+	clicked_vec.push_back(2);
+
+		});
+	yellowButton->onClick([&]() {
+		msgTextArea->setText("You Clicked Red Button\n");
+	clicked_vec.push_back(3);
+
+		});
+	blueButton->onClick([&]() {
+		msgTextArea->setText("You Clicked Yellow Button");
+	clicked_vec.push_back(4);
+
+		});
 
 	startButton->onClick([&]() {
 		startButton->setEnabled(false);
@@ -63,166 +81,77 @@ int main()
 	redButton->getRenderer()->setBackgroundColor(WHITE);
 	yellowButton->getRenderer()->setBackgroundColor(WHITE);
 
-	static vector<int> ran_vec = { 0 };
-	static vector<int> clicked_vec = { 0 };
-	int ran_num=0;
+	int ran_num = 0;
+	ran_vec.clear();
+	clicked_vec.clear();
+	srand(std::time(0));
 	for (int i = 0; i < 4; i++) {
-		 ran_num = (rand() % 4) + 1;
-		cout << ran_num << endl;
+		ran_num = (rand() % 4) + 1;
+
 		ran_vec.push_back(ran_num);
+		cout << ran_vec[i] << endl;
 	} //for end
 
 
 	cout << "Random Number Generated. Please Click any buttons" << endl;
 	msgTextArea->setText("Random Number Generated.\n");
 
-	//turn on and off the button
-	cout << "turn on the light now" << endl;
-	while (!gameOver) {
-
-		for (int i = 0; i < 4; i++) {
-			switch (ran_vec[i]) {
-			case 1: //green
-				isGreenOn = true;
-				break;
-			case 2: //blue
-				isBlueOn = true;
-				break;
-			case 3: //red
-				isRedOn = true;
-				break;
-			case 4: //yellow
-				isYellowOn = true;
-				break;
-			} //for end
-
-			// update button colors
-			if (isGreenOn) {
-				blueButton->getRenderer()->setBackgroundColor(WHITE);
-				redButton->getRenderer()->setBackgroundColor(WHITE);
-				yellowButton->getRenderer()->setBackgroundColor(WHITE);
-				sf::sleep(sf::milliseconds(2000)); //pause for 0.5 seconds
-				greenButton->getRenderer()->setBackgroundColor(GREEN);
-				isGreenOn = false;
-			}
-			else if (isBlueOn) {
-				greenButton->getRenderer()->setBackgroundColor(WHITE);
-				redButton->getRenderer()->setBackgroundColor(WHITE);
-				yellowButton->getRenderer()->setBackgroundColor(WHITE);
-				sf::sleep(sf::milliseconds(2000)); //pause for 0.5 seconds
-				blueButton->getRenderer()->setBackgroundColor(BLUE);
-				isBlueOn = false;
-
-			}
-			else if (isRedOn) {
-				greenButton->getRenderer()->setBackgroundColor(WHITE);
-				blueButton->getRenderer()->setBackgroundColor(WHITE);
-				yellowButton->getRenderer()->setBackgroundColor(WHITE);
-				sf::sleep(sf::milliseconds(2000)); //pause for 0.5 seconds
-				redButton->getRenderer()->setBackgroundColor(BLUE);
-				isRedOn = false;
-			}
-			else if (isYellowOn) {
-				greenButton->getRenderer()->setBackgroundColor(WHITE);
-				redButton->getRenderer()->setBackgroundColor(WHITE);
-				blueButton->getRenderer()->setBackgroundColor(WHITE);
-				sf::sleep(sf::milliseconds(2000)); //pause for 0.5 seconds
-				yellowButton->getRenderer()->setBackgroundColor(BLUE);
-				isYellowOn = false;
-			} //else if end
-
-		} //for end
-		
-		
-		//detecting user's click event
-		greenButton->onClick([]() {
-			msgTextArea->setText("You Clicked Green Button\n");
-			clicked_vec.push_back(1);
-			});
-		blueButton->onClick([]() {
-			msgTextArea->setText("You Clicked Blue Button\n");
-		clicked_vec.push_back(2);
-			});
-		redButton->onClick([]() {
-			msgTextArea->setText("You Clicked Red Button\n");
-		clicked_vec.push_back(3);
-			});
-		yellowButton->onClick([]() {
-			msgTextArea->setText("You Clicked Yellow Button");
-		clicked_vec.push_back(4);
-			});
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::MouseButtonPressed) {
-				if (event.mouseButton.button == sf::Mouse::Left) { //if clicked mouse left
-					if (!gameOver) //if not game over yet
-					{
-						for (int i = 0; i < 4; i++) {
-							if (greenButton)
-							{
-								clicked_vec.push_back(1);
-							}
-							else if (blueButton)
-							{
-								clicked_vec.push_back(1);
-							}
-							else if (redButton)
-							{
-								clicked_vec.push_back(3);
-							}
-							else if (yellowButton)
-							{
-								clicked_vec.push_back(4);
-							}
-							else if (clicked_vec.size() == 4) { //if vector is full
-								//disable buttons
-								greenButton->setEnabled(false);
-								blueButton->setEnabled(false);
-								redButton->setEnabled(false);
-								yellowButton->setEnabled(false);
-
-								if (ran_vec == clicked_vec) {
-									gameOver = true;
-								}
-								else {
-									msgTextArea->setText("Wrong!\n");
-									clicked_vec = { 0 }; //reset the clicked vector
-								}
-							}
-
-						}
-				
-					} //if end
-				} //if end
-
-
-			} //if end
-			
-		} //while(event) end
-
-		// check if the sequence is right
-		
-
-	} //while(!gameover) end
-
-
-		}); //startButton onclick end
 	
 
 
-	//} //while(isopen) end
+	if (clicked_vec.size() == 4)
+	{
+		//if vector is full
+		//disable buttons
+		greenButton->setEnabled(false);
+		blueButton->setEnabled(false);
+		redButton->setEnabled(false);
+		yellowButton->setEnabled(false);
+		// check if the sequence is right
+		if (ran_vec == clicked_vec) {
+			gameOver = true;
+			msgTextArea->setText("Game Over! Bye");
+			exit(EXIT_SUCCESS);
+		}
+		else {
+			msgTextArea->setText("Wrong!\n");
+			clicked_vec.clear(); //reset the clicked vector
 
-	gui.draw();
-	window.display();
-	gui.mainLoop();
+		}
+	}
+		}); //startButton onclick end
+
+	while (window.isOpen()) {
+		sf::Clock clock;
+		sf::Event event;
+
+		//handle window close event
+		while (window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed)
+				window.close();
+
+			gui.handleEvent(event);
+		}
+
+		// Check for mouse button press event
+		if (event.type == sf::Event::MouseButtonPressed) {
+			// Check if mouse position is inside the bounds of the button
+			if () {
+				// Execute button's callback function
+				
+			}
+		}
+
+
+
+
+
+
+		window.clear();
+		gui.draw();
+		window.display();
+	}
+	
 	return 0;
 }
 
-void startGame() {
-
-
-}
-
-void endGame() {
-	cout << "Game End" << endl;
-	//	setText("Game End\n");
-}
