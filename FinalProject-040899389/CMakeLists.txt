@@ -10,4 +10,4 @@ add_executable (FinalProject-040899389 "FinalProject-040899389.cpp" "FinalProjec
  
 target_include_directories(FinalProject-040899389 PUBLIC "./include")
 target_link_directories(FinalProject-040899389 PUBLIC "./lib")
-target_link_libraries(FinalProject-040899389 sfml-main-d sfml-graphics-d sfml-system-d sfml-window-d tgui-d)
+target_link_libraries(FinalProject-040899389 sfml-main-d sfml-graphics-d sfml-system-d sfml-window-d tgui-d sfml-audio-d)
